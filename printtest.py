@@ -29,7 +29,13 @@ with open('ChicagoCrimes2001-now.csv','r') as csvfile:
         else:
             break
 
-        print(row)
+        block=row[3]
+        tempstring=""
+        for c in range(len(block)):
+            if not block[c].isnumeric():
+                tempstring+=block[c]
+        print(tempstring)
+        #print(row)
 
 #data=[go.Histogram(x=Date)]
 

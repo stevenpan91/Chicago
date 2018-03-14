@@ -10,21 +10,26 @@ import plotly.graph_objs as go
 from sepdata import ChiData
 import math
 
-ChiData1=ChiData('ChicagoCrimes2001-now.csv',1,math.inf)
+
+ChiData1 = ChiData('ChicagoCrimes2001-now.csv',1,math.inf,5,"Homicide")
 
 categories=[]
 counter=[]
 
-for crimetype in ChiData1.PrimaryType:
-    if crimetype not in categories:
-        categories.append(crimetype)
+for block in ChiData1.Block:
+    tempstring=""
+    for c in range(len(block)):
+        if c>5:
+            tempstring+=block[c]
+    if tempstring not in categories:
+        categories.append(tempstring)
         counter.append(1)
     else:
-        counter[categories.index(crimetype)]+=1
+        counter[categories.index(tempstring)]+=1
 
 data = [go.Bar(
             x=categories,
             y=counter
     )]
 
-plot(data,filename='PrimaryTypeBarChart.html')
+plot(data,filename='HomicideBlockBarChart.html')
