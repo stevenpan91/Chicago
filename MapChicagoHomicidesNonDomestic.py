@@ -13,6 +13,13 @@ import math
 
 
 ChiData1 = ChiData('ChicagoCrimes2001-now.csv',1,math.inf,5,"Homicide")
+Latitude=[]
+Longitude=[]
+
+for i in range(len(ChiData1.Latitude)):
+    if ChiData1.LocationDesc[i]=='HOUSE' or ChiData1.LocationDesc[i]=='APARTMENT':
+        Latitude.append(ChiData1.Latitude[i])
+        Longitude.append(ChiData1.Longitude[i])
 
 #coord of Chicago
 layout = {
@@ -76,8 +83,8 @@ layout = {
 
 # Create a trace
 trace = go.Scatter(
-    x = ChiData1.Longitude,
-    y = ChiData1.Latitude,
+    x = Longitude,
+    y = Latitude,
     mode = 'markers'
 )
 
@@ -89,4 +96,4 @@ fig={
 
 }
 
-plot(fig,filename='LongLatChicagoHomicides.html')
+plot(fig,filename='LongLatChicagoHomicidesNonDomestic.html')

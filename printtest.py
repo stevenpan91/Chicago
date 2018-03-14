@@ -20,7 +20,7 @@ with open('ChicagoCrimes2001-now.csv','r') as csvfile:
     counter=0
     for row in reader:
         counter+=1
-        if counter<=10:
+        if counter<=5:
         #if True:
             ID.append(row[0])
             CaseNum.append(row[1])
@@ -34,8 +34,8 @@ with open('ChicagoCrimes2001-now.csv','r') as csvfile:
         for c in range(len(block)):
             if not block[c].isnumeric():
                 tempstring+=block[c]
-        print(tempstring)
-        #print(row)
+        #print(tempstring)
+        print(row)
 
 #data=[go.Histogram(x=Date)]
 
